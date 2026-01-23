@@ -79,7 +79,7 @@ export default function AuthLayout({ children }) {
 
                     <p className="text-xl text-[#B9F3EA] max-w-2xl leading-relaxed font-['Plus_Jakarta_Sans'] font-medium">
                         Radar helps you track and analyze <span className="text-white font-semibold">Stocks, Crypto, and Forex</span> in one place.
-                        Get real-time data, interactive charts, and smart insights to make faster, informed decisions.
+                        Get real-time data, interactive charts, and smart  insights to make faster, informed decisions.
                     </p>
 
                 </motion.div>
