@@ -1,4 +1,9 @@
 import React from 'react';
+
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+
+
+
 import { TrendingUp, Shield, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Tilt } from 'react-tilt';
@@ -34,12 +39,14 @@ export default function AuthLayout({ children }) {
                     />
                 </div>
 
+                
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                     className="relative z-10 max-w-3xl"
                 >
+
                     <div className="flex items-center gap-5 mb-12">
                         <div className="relative">
                             <div className="absolute inset-0 bg-[#6FFFE9]/20 blur-2xl rounded-full" />
@@ -53,12 +60,28 @@ export default function AuthLayout({ children }) {
                             <span className="text-4xl font-black tracking-tighter font-['Plus_Jakarta_Sans'] text-white leading-none">RADAR</span>
                             <span className="text-[10px] font-bold tracking-[0.2em] text-[#6FFFE9] opacity-80 uppercase mt-1">Invest & Trade Smarter</span>
                         </div>
+
+                        {/* Animation placed right of the logo text */}
+
                     </div>
 
-                    <h1 className="text-6xl font-extrabold leading-tight mb-8 font-['Plus_Jakarta_Sans'] drop-shadow-sm tracking-tight">
-                        Master the Markets <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6FFFE9] to-[#ffffff]">Multi-Asset Analytics</span>
-                    </h1>
+                    <div className="relative">
+                        <div className="absolute top-2/3 right-0 translate-x-[68%] -translate-y-1/2 w-full h-full opacity-80 pointer-events-none -z-10 scale-[4.5]">
+                            <DotLottieReact
+                                src="/animation.lottie"
+                                loop
+                                autoplay
+                            />
+                        </div>
+                        <h1 className="text-6xl font-extrabold leading-tight mb-8 font-['Plus_Jakarta_Sans'] drop-shadow-sm tracking-tight relative z-10">
+                            Master the Markets <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6FFFE9] to-[#ffffff]">Multi-Asset Analytics</span>
+                        </h1>
+                    </div>
+
+                    
+
+                    
 
                     <p className="text-xl text-[#B9F3EA] max-w-2xl leading-relaxed font-['Plus_Jakarta_Sans'] font-medium">
                         Radar helps you track and analyze <span className="text-white font-semibold">Stocks, Crypto, and Forex</span> in one place.
