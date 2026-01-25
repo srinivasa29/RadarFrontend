@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+
 
 
 import { TrendingUp, Shield, Globe } from 'lucide-react';
@@ -37,8 +39,7 @@ export default function AuthLayout({ children }) {
                     />
                 </div>
 
-
-
+                
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -59,6 +60,7 @@ export default function AuthLayout({ children }) {
                             <span className="text-4xl font-black tracking-tighter font-['Plus_Jakarta_Sans'] text-white leading-none">RADAR</span>
                             <span className="text-[10px] font-bold tracking-[0.2em] text-[#6FFFE9] opacity-80 uppercase mt-1">Invest & Trade Smarter</span>
                         </div>
+
                         {/* Animation placed right of the logo text */}
 
                     </div>
@@ -77,9 +79,13 @@ export default function AuthLayout({ children }) {
                         </h1>
                     </div>
 
+                    
+
+                    
+
                     <p className="text-xl text-[#B9F3EA] max-w-2xl leading-relaxed font-['Plus_Jakarta_Sans'] font-medium">
                         Radar helps you track and analyze <span className="text-white font-semibold">Stocks, Crypto, and Forex</span> in one place.
-                        Get real-time data, interactive charts, and smart  insights to make faster, informed decisions.
+                        Get real-time data, interactive charts, and smart insights to make faster, informed decisions.
                     </p>
 
                 </motion.div>
