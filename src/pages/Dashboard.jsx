@@ -15,7 +15,7 @@ import {
 import { Search } from "lucide-react";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
-import "./HomePage.css";
+import "./Dashboard.css";
 
 const mockStock = {
   symbol: "BTC",
@@ -89,7 +89,7 @@ const defaultTiltOptions = {
   easing: "cubic-bezier(.03,.98,.52,.99)",    // Easing on enter/exit.
 };
 
-export default function HomePage() {
+export default function Dashboard() {
   const [isTraderMode, setIsTraderMode] = useState(
     localStorage.getItem("mode") === "TRADER"
   );
