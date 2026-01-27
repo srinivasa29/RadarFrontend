@@ -129,7 +129,7 @@ export default function Register() {
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
-              <p className="text-xs text-gray-400 mt-2">
+              <p className="text-xs text-gray-400 mt-2 px-4">
                 Use 8 or more characters with a mix of letters, numbers & symbols.
               </p>
             </div>

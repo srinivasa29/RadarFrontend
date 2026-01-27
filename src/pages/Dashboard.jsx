@@ -108,7 +108,7 @@ export default function Dashboard() {
       <header className="navbar">
         <a href="/" className="brand">
           <img
-            src="/radar-logo.jpeg"
+            src="/radar-logo-final.jpg"
             alt="Radar Logo"
             className="logo-img"
           />

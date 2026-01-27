@@ -39,7 +39,7 @@ export default function AuthLayout({ children }) {
                     />
                 </div>
 
-                
+
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -51,7 +51,7 @@ export default function AuthLayout({ children }) {
                         <div className="relative">
                             <div className="absolute inset-0 bg-[#6FFFE9]/20 blur-2xl rounded-full" />
                             <img
-                                src="/radar-icon.jpg"
+                                src="/radar-logo-final.jpg"
                                 alt="Radar Icon"
                                 className="w-16 h-16 rounded-full shadow-2xl border-2 border-white/20 object-cover relative z-10"
                             />
@@ -79,9 +79,9 @@ export default function AuthLayout({ children }) {
                         </h1>
                     </div>
 
-                    
 
-                    
+
+
 
                     <p className="text-xl text-[#B9F3EA] max-w-2xl leading-relaxed font-['Plus_Jakarta_Sans'] font-medium">
                         Radar helps you track and analyze <span className="text-white font-semibold">Stocks, Crypto, and Forex</span> in one place.

@@ -1,39 +1,83 @@
-# Implementation Plan: Premium Auth Experience Enhancements
+# implementation_plan.md
 
-## Core Objective
-Elevate the authentication flow from a standard form to a premium, interactive experience that reflects the "Radar" brand's analytical and modern nature.
+## High-Level Objective
+Create a sophisticated, "Webull-inspired" Home Page for **Radar** that features a high-contrast dark theme, neon accents, glassmorphism, and a "Split-Screen" layout to showcase the Dual-Mode functionality (Trader vs. Investor).
 
-## Completed Refinements
-- ✅ **New Color Palette**: Implemented deep teal and sea green gradients.
-- ✅ **Dynamic Backgrounds**: Added animated blobs and light gradients to the right panel.
-- ✅ **Logo Overhaul**: Circular radar icon with stylized "Invest & Trade Smarter" branding.
-- ✅ **Multi-Mode Auth**: Integrated both Email and Phone login/registration options.
-- ✅ **Interactive Cards**: Added 3D tilt effects (`react-tilt`) with enhanced shadows and glassmorphism.
+## 1. Design System & Theming
+**Goal:** Establish the visual language (Dark Mode, Neon, Glassmorphism).
 
-## Proposed Enhancements (The "WOW" Factor)
+-   **Color Palette:**
+    -   **Backgrounds:** Deep Gunmetal (`#0F172A`), Midnight Blue (`#020617`), Pure Black (`#000000`).
+    -   **Accents:**
+        -   **Radar Cyan:** `#6FFFE9` (Primary Brand)
+        -   **Neon Green:** `#4ADE80` (Growth/Profit)
+        -   **Electric Blue:** `#3B82F6` (Trust/Data)
+        -   **Hot Pink/Purple:** `#D946EF` (Gradients/Highlights)
+-   **Typography:**
+    -   Headings: `Plus Jakarta Sans` or `Inter` (Bold, Tracking-Tight).
+    -   Body: `Inter` or `Roboto` (Clean, Legible).
+-   **Glassmorphism:**
+    -   `bg-white/5 backdrop-blur-md border border-white/10` style cards.
 
-### 1. Typography & Casing Branding (New)
-*   **Font Choice**: **Plus Jakarta Sans** is the winner. It's modern, geometric, and perfectly suited for fintech.
-*   **Case Strategy**:
-    *   **Branding (Logo)**: **ALL CAPS** (e.g., RADAR) - suggests strength and stability.
-    *   **Page Titles**: **Title Case** (e.g., Log in to Radar) - feels more welcoming and user-friendly than all caps.
-    *   **Action Buttons**: **ALL CAPS** with `tracking-widest` - creates a clear call-to-action that stands out.
-    *   **Labels/Placeholders**: **Sentence case** - maximizes readability for data entry.
+**Design Updates:**
+1.  Update `tailwind.config.js` to include these colors and fonts.
+2.  Ensure `index.css` has base styles for smooth scrolling and dark mode defaults.
 
-### 2. Advanced Micro-Interactions
-- **Input Glow**: Instead of a simple border change, a soft "aura" glow when an input is focused, matching the primary brand color.
-- **Success/Error Haptics**: Subtle screen shakes on error and smooth "unlock" animations on successful login.
+## 2. Component Architecture
+We will build a reusable `SplitScreenSection` component to handle the "Alternating Grid" layout efficiently, and then specialized components for each unique section.
 
-### 2. Mesh Gradient Evolution
-- **Dynamic Mesh**: Replace the current static gradients with a moving mesh gradient that reacts to mouse movement on the left panel.
-- **Ray-Tracing Effects**: Add subtle light beams that "sweep" across the logo like a real radar pulse.
+### Components to Build:
+1.  **`SplitScreenSection.jsx`**
+    -   **Props:** `title`, `description`, `features` (array), `imageComp` (React Node), `reverse` (boolean for Left/Right swap), `id`.
+    -   **Behavior:** Uses `framer-motion` to slide text in when in view. High-performance scroll triggers.
+2.  **`HeroSection.jsx` (The Adaptive Interface)**
+    -   **Visual:** A large, interactive toggle switch animation demonstrating "Lite" vs "Pro" views.
+    -   **Content:** "One Platform, Two Personas", "Tailored Complexity", "Smart Persistence".
+3.  **`GlobalAssetSection.jsx` (Global Asset Coverage)**
+    -   **Visual:** A 3D-style orbital animation (using CSS/Framer Motion) showing floating logos (Bitcoin, Apple, Forex symbols) revolving around a central Radar core.
+    -   **Content:** "Unified Multi-Asset Support", "Smart Search", "Real-Time Precision".
+4.  **`TraderModeSection.jsx` (Professional Terminal)**
+    -   **Visual:** A complex, high-density dashboard mockup (Candlesticks, Depth Charts) with glowing indicators. Tilt effect enabled.
+    -   **Content:** "Technical Depth", "Market Depth", "Low Latency Execution".
+5.  **`InvestorModeSection.jsx` (Fundamental Insights)**
+    -   **Visual:** Clean, wide area charts, growth cards, and simplified metrics. Green/Teal dominant.
+    -   **Content:** "Simplified Growth", "Core Fundamentals", "Curated Watchlists".
+6.  **`Home.jsx` (Assembly)**
+    -   Stacks these sections vertically.
+    -   Adds a unified background gradient/mesh that subtly shifts as you scroll.
 
-### 3. Glassmorphism Optimization
-- **Frosted Glass Forms**: Increase the backdrop blur of the form container while maintaining readability.
-- **Floating Secondary Elements**: Add small, floating data points or "nodes" that move in the background of the form area, suggesting data analysis in progress.
+## 3. Implementation Steps
 
-### 4. Smart Transitions
-- **Page Flipping**: Instead of standard route changes, use a "card flip" or "slide & blur" transition between Login, Register, and Forgot Password.
+### Step 1: Configuration
+-   Modify `tailwind.config.js` to add custom colors (`radar-dark`, `radar-teal`, etc.) and fonts.
+-   Add global CSS for "neon-glow" utilities.
 
-## border hover border update 
-Updating the border hover border on all auth pages to give inputs a "magnetic" focus feel.
+### Step 2: Base Components
+-   Create `src/components/landing/SplitScreenSection.jsx`.
+-   Ensure it handles `framer-motion` scroll animations (fade-in + slide-up).
+
+### Step 3: Section Implementation (Iterative)
+-   **Hero:** Build the "Adaptive Interface" visualization.
+-   **Global Assets:** Implement the orbital animation.
+-   **Trader View:** create a "Card" that looks like a trading terminal.
+-   **Investor View:** create a "Card" that looks like a portfolio summary.
+
+### Step 4: Page Assembly
+-   Update `src/pages/Home.jsx` to import and arrange these sections.
+-   Add a Footer (if not already present/updated).
+
+## 4. Animation Strategy (The "Wow" Factor)
+-   **Scroll Reveal:** Text staggers in line-by-line using `staggerChildren`.
+-   **Parallax:** Subtle movement of background elements against the foreground cards.
+-   **Hover Effects:** Cards glow or tilt (`react-tilt`) on mouse interaction.
+-   **Syncing:** Text highlights light up when the corresponding visual part animates (if possible, otherwise standard scroll sync).
+
+## 5. Dependencies
+-   `framer-motion` (Installed)
+-   `react-tilt` (Installed)
+-   `lucide-react` (Installed)
+-   `clsx` / `tailwind-merge` (Recommended for dynamic classes, check if available or install).
+
+## 6. Verification
+-   Check responsivity (Mobile stack vs Desktop split).
+-   Verify contrast ratios (Webull aesthetic requires legible text on dark backgrounds).

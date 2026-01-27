@@ -58,8 +58,8 @@ export default function MarketFloorAnimation() {
                 style={{ transform: "rotateX(60deg) scale(1.2)" }}
             >
                 {/* -- Layer 1: The Base Grid/Radar -- */}
-                <div className="absolute inset-0 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 border-[1px] border-emerald-500/20 rounded-full animate-[spin_60s_linear_infinite]" />
-                <div className="absolute inset-0 w-[400px] h-[400px] -translate-x-1/2 -translate-y-1/2 border-[1px] border-emerald-500/10 rounded-full border-dashed animate-[spin_40s_linear_infinite_reverse]" />
+                <div className="absolute inset-0 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 border-[1px] border-emerald-500/20 rounded-full animate-[spin_120s_linear_infinite]" />
+                <div className="absolute inset-0 w-[400px] h-[400px] -translate-x-1/2 -translate-y-1/2 border-[1px] border-emerald-500/10 rounded-full border-dashed animate-[spin_80s_linear_infinite_reverse]" />
 
                 {/* -- Layer 2: Market Candles (Rising from floor) -- */}
                 <div className="absolute flex items-end justify-center w-[300px] h-[300px] -translate-x-1/2 -translate-y-1/2" style={{ transform: "rotateX(-60deg)" }}>
@@ -74,15 +74,15 @@ export default function MarketFloorAnimation() {
                 {/* -- Layer 3: Orbiting Stock Icons -- */}
                 {/* Inner Ring */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <OrbitItem radius={180} speed={25}><DollarSign size={24} /></OrbitItem>
-                    <OrbitItem radius={-180} speed={25}><Euro size={24} /></OrbitItem>
+                    <OrbitItem radius={180} speed={50}><DollarSign size={24} /></OrbitItem>
+                    <OrbitItem radius={-180} speed={50}><Euro size={24} /></OrbitItem>
                 </div>
 
                 {/* Outer Ring */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <OrbitItem radius={260} speed={35}><Bitcoin size={24} className="text-orange-400" /></OrbitItem>
-                    <OrbitItem radius={-260} speed={35}><Activity size={24} /></OrbitItem>
-                    <OrbitItem radius={260} speed={35} startAngle={90}><TrendingUp size={24} /></OrbitItem>
+                    <OrbitItem radius={260} speed={70}><Bitcoin size={24} className="text-orange-400" /></OrbitItem>
+                    <OrbitItem radius={-260} speed={70}><Activity size={24} /></OrbitItem>
+                    <OrbitItem radius={260} speed={70} startAngle={90}><TrendingUp size={24} /></OrbitItem>
                 </div>
 
                 {/* Center Piece: The "Reactor" / Logo */}
@@ -92,7 +92,7 @@ export default function MarketFloorAnimation() {
                         transition={{ duration: 3, repeat: Infinity }}
                         className="w-32 h-32 bg-slate-900 rounded-full border-4 border-emerald-500 flex items-center justify-center relative z-20"
                     >
-                        <img src="/radar-orbit-logo.png" className="w-full h-full object-cover rounded-full opacity-90" />
+                        <img src="/radar-logo-final.jpg" className="w-full h-full object-cover rounded-full opacity-90" />
 
                         {/* Hologram Light Beam */}
                         <div className="absolute bottom-0 w-full h-20 bg-emerald-500/20 blur-xl rounded-full" style={{ transform: "translateY(50%) rotateX(-90deg)" }}></div>
