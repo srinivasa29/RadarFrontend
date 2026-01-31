@@ -1,150 +1,142 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import SplitScreenSection from './SplitScreenSection';
-import { TrendingUp, Activity, Layers, Smartphone, Monitor } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { TrendingUp, Activity, Search, Globe, Target, Merge, ScanSearch, Users, Zap, Layers } from 'lucide-react';
 
 const HeroSection = () => {
-    const [activeMode, setActiveMode] = useState('investor'); // 'investor' or 'trader'
 
-    // Auto-toggle for demonstration
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setActiveMode(prev => prev === 'investor' ? 'trader' : 'investor');
-        }, 2000);
-        return () => clearInterval(interval);
-    }, []);
-
-    const features = [
+    const cards = [
         {
-            title: "One Platform, Two Personas",
-            text: "Seamlessly toggle between a 'Lite' investor view and a 'Pro' trading desk."
+            title: "What Is Radar",
+            description: "Radar is a real-time market research platform that brings together global market data, charts, indicators, and price movements into a single, structured interface for deeper analysis and informed decision-making.",
+            visual: (
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-900/5">
+                    <div className="relative">
+                        <div className="absolute inset-0 bg-[#348E87]/20 blur-xl rounded-full" />
+                        <Globe size={64} className="text-[#348E87] relative z-10 opacity-80" strokeWidth={1.5} />
+                        <div className="absolute -right-2 -top-2 bg-white p-1.5 rounded-full shadow-sm border border-[#348E87]/20">
+                            <Zap size={16} className="text-yellow-500 fill-yellow-500" />
+                        </div>
+                    </div>
+                </div>
+            )
         },
         {
-            title: "Tailored Complexity",
-            text: "Radar adjusts tools and data density to match your expertise level."
+            title: "Who Radar Is For",
+            description: "Built for investors, traders, and market learners who want direct access to raw market data — whether researching long-term opportunities or closely observing short-term market behavior.",
+            visual: (
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-900/5">
+                    <div className="flex items-center gap-4 opacity-80">
+                        <div className="flex flex-col items-center gap-2">
+                            <div className="w-12 h-12 bg-[#348E87]/10 rounded-2xl flex items-center justify-center border border-[#348E87]/20">
+                                <Users size={24} className="text-[#348E87]" />
+                            </div>
+                            <div className="h-1 w-8 bg-[#348E87]/20 rounded-full" />
+                        </div>
+                        <Target size={48} className="text-[#348E87]" strokeWidth={1.5} />
+                    </div>
+                </div>
+            )
         },
         {
-            title: "Smart Persistence",
-            text: "Your layout preference is remembered across every session."
+            title: "Why Radar Exists",
+            description: "Market data is scattered across platforms and tools. Radar exists to centralize that data, making market research faster, clearer, and more focused — without jumping between multiple sources.",
+            visual: (
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-900/5">
+                    <div className="relative p-6 border border-dashed border-[#348E87]/30 rounded-full">
+                        <Merge size={48} className="text-[#348E87] opacity-80 rotate-90" strokeWidth={1.5} />
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-[#348E87] rounded-full" />
+                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-[#348E87]/50 rounded-full" />
+                    </div>
+                </div>
+            )
+        },
+        {
+            title: "Research First. Trade Anywhere.",
+            description: "Radar is designed purely for research and analysis. Users study markets, test ideas, and track assets on Radar, then execute trades on their preferred brokerage platforms.",
+            visual: (
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-900/5">
+                    <div className="flex gap-4 items-center">
+                        <div className="bg-white p-3 rounded-xl shadow-sm border border-[#348E87]/10">
+                            <ScanSearch size={32} className="text-[#348E87]" />
+                        </div>
+                        <div className="w-8 h-[2px] bg-[#348E87]/30 border-t border-dashed border-[#348E87]" />
+                        <div className="bg-gray-100 p-3 rounded-xl border border-gray-200 opacity-50">
+                            <Layers size={32} className="text-gray-400" />
+                        </div>
+                    </div>
+                </div>
+            )
         }
     ];
 
-    const VisualComponent = () => (
-        <div className="relative w-full max-w-sm mx-auto h-[400px]">
-            {/* Background Glow */}
-            <div
-                className={`absolute inset-0 blur-[80px] transition-colors duration-1000 ${activeMode === 'investor' ? 'bg-radar-green/20' : 'bg-radar-blue/20'
-                    }`}
-            />
-
-            <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
-                {/* Toggle Switch Visual */}
-                <div className="bg-radar-bg/80 backdrop-blur-md rounded-full p-2 border border-white/10 mb-8 flex relative w-64">
-                    <motion.div
-                        layout
-                        className="absolute top-2 bottom-2 w-[calc(50%-8px)] bg-white/10 rounded-full shadow-lg"
-                        animate={{
-                            x: activeMode === 'investor' ? 0 : '100%',
-                            backgroundColor: activeMode === 'investor' ? '#10C29E' : '#3B82F6'
-                        }}
-                    />
-                    <button
-                        className={`flex-1 relative z-10 text-sm font-bold py-3 text-center transition-colors ${activeMode === 'investor' ? 'text-white' : 'text-gray-400'}`}
-                        onClick={() => setActiveMode('investor')}
-                    >
-                        INVESTOR
-                    </button>
-                    <button
-                        className={`flex-1 relative z-10 text-sm font-bold py-3 text-center transition-colors ${activeMode === 'trader' ? 'text-white' : 'text-gray-400'}`}
-                        onClick={() => setActiveMode('trader')}
-                    >
-                        TRADER
-                    </button>
-                </div>
-
-                {/* Dynamic Card */}
-                <div className="w-full relative h-64 perspective-1000">
-                    <AnimatePresence mode='wait'>
-                        {activeMode === 'investor' ? (
-                            <motion.div
-                                key="investor"
-                                initial={{ rotateY: -90, opacity: 0 }}
-                                animate={{ rotateY: 0, opacity: 1 }}
-                                exit={{ rotateY: 90, opacity: 0 }}
-                                transition={{ duration: 0.5 }}
-                                className="absolute inset-0 bg-gradient-to-br from-radar-teal/20 to-radar-bg border border-radar-teal/30 rounded-2xl p-6 shadow-2xl backdrop-blur-xl"
-                            >
-                                <div className="flex justify-between items-start mb-4">
-                                    <div>
-                                        <h4 className="text-gray-400 text-xs uppercase tracking-wider">Total Balance</h4>
-                                        <div className="text-3xl font-bold text-white mt-1">$14,230.50</div>
-                                    </div>
-                                    <div className="bg-radar-green/20 text-radar-green px-2 py-1 rounded text-xs font-bold">+2.4%</div>
-                                </div>
-                                <div className="h-24 flex items-end justify-between gap-1 mb-4">
-                                    {[40, 60, 45, 70, 65, 80, 75].map((h, i) => (
-                                        <motion.div
-                                            key={i}
-                                            initial={{ height: 0 }}
-                                            animate={{ height: `${h}%` }}
-                                            transition={{ delay: i * 0.05 }}
-                                            className="w-full bg-radar-teal/50 rounded-t-sm"
-                                        />
-                                    ))}
-                                </div>
-                                <div className="space-y-2">
-                                    <div className="h-2 bg-white/5 rounded-full w-3/4" />
-                                    <div className="h-2 bg-white/5 rounded-full w-1/2" />
-                                </div>
-                            </motion.div>
-                        ) : (
-                            <motion.div
-                                key="trader"
-                                initial={{ rotateY: -90, opacity: 0 }}
-                                animate={{ rotateY: 0, opacity: 1 }}
-                                exit={{ rotateY: 90, opacity: 0 }}
-                                transition={{ duration: 0.5 }}
-                                className="absolute inset-0 bg-gradient-to-br from-radar-blue/20 to-radar-bg border border-radar-blue/30 rounded-2xl p-4 shadow-2xl backdrop-blur-xl"
-                            >
-                                <div className="grid grid-cols-2 gap-2 mb-2">
-                                    <div className="bg-black/40 rounded p-2 border border-white/5">
-                                        <div className="text-[10px] text-gray-500">BID</div>
-                                        <div className="text-radar-green font-mono text-sm">1.0921</div>
-                                    </div>
-                                    <div className="bg-black/40 rounded p-2 border border-white/5">
-                                        <div className="text-[10px] text-gray-500">ASK</div>
-                                        <div className="text-red-400 font-mono text-sm">1.0924</div>
-                                    </div>
-                                </div>
-                                <div className="flex-1 bg-black/40 rounded border border-white/5 p-2 h-32 relative overflow-hidden">
-                                    {/* Mock Candlesticks */}
-                                    <div className="flex items-end justify-between h-full gap-[2px]">
-                                        {[...Array(20)].map((_, i) => (
-                                            <div
-                                                key={i}
-                                                className={`w-full rounded-sm ${i % 2 === 0 ? 'bg-radar-green' : 'bg-red-500'}`}
-                                                style={{ height: `${Math.random() * 80 + 10}%`, opacity: 0.8 }}
-                                            />
-                                        ))}
-                                    </div>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </div>
-            </div>
-        </div>
-    );
-
     return (
-        <SplitScreenSection
-            id="adaptive-interface"
-            title="The Adaptive Interface"
-            description="Whether you're building long-term wealth or capitalizing on short-term volatility, Radar adapts to you."
-            features={features}
-            imageComp={<VisualComponent />}
-            reverse={false}
-        />
+        <section className="relative pt-20 pb-12 overflow-hidden">
+            <div className="container mx-auto px-6 h-full flex flex-col justify-center">
+
+                {/* Main Header */}
+                <div className="text-center max-w-4xl mx-auto mb-14">
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-5xl md:text-6xl font-bold tracking-tight text-[#348E87] mb-6 leading-tight"
+                    >
+                        Understand markets.<br />Act confidently.
+                    </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="text-lg md:text-xl text-[#348E87]/70 mb-8 leading-relaxed font-light"
+                    >
+                        Radar is a real-time market research platform for observing and analyzing global markets in one structured interface.
+                    </motion.p>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        <Link
+                            to="/register"
+                            className="bg-[#348E87] text-white px-6 py-3 rounded-full font-bold text-base hover:bg-[#2a756e] transition-all shadow-lg shadow-[#348E87]/20 inline-block"
+                        >
+                            Explore Radar
+                        </Link>
+                    </motion.div>
+                </div>
+
+                {/* Feature Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                    {cards.map((card, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.1 }}
+                            className="group h-[390px] flex flex-col bg-white rounded-2xl overflow-hidden border border-[#348E87]/10 hover:shadow-xl hover:border-[#348E87]/30 transition-all duration-300"
+                        >
+                            {/* Visual Area (Top 50%) */}
+                            <div className="h-[50%] relative bg-[#fcfcfc] border-b border-[#348E87]/5 group-hover:bg-[#348E87]/5 transition-colors">
+                                {/* Title Overlay */}
+                                <div className="absolute top-4 left-4 z-10 w-[90%]">
+                                    <h3 className="text-lg font-bold text-[#348E87] leading-tight group-hover:translate-x-1 transition-transform">{card.title}</h3>
+                                </div>
+                                {card.visual}
+                            </div>
+
+                            {/* Text Area (Bottom 50%) */}
+                            <div className="h-[50%] p-6 flex flex-col justify-start">
+                                <p className="text-[#348E87]/70 text-sm leading-relaxed">
+                                    {card.description}
+                                </p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+            </div>
+        </section>
     );
 };
 

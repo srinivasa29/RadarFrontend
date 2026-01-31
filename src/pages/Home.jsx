@@ -8,61 +8,55 @@ import {
 import HeroSection from '../components/landing/HeroSection';
 import GlobalAssetSection from '../components/landing/GlobalAssetSection';
 import TraderModeSection from '../components/landing/TraderModeSection';
-import InvestorModeSection from '../components/landing/InvestorModeSection';
+import InvestorModeSection from '../components/landing/Section4';
 
 // --- Navbar ---
 const Navbar = () => (
-    <nav className="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center backdrop-blur-xl bg-[#103E46]/80 border-b border-[#6FFFE9]/10 transition-all duration-300">
-        {/* Left: Logo & Menu */}
-        <div className="flex items-center gap-8">
-            <div className="flex items-center gap-3">
-                <div className="relative">
-                    <img
-                        src="/radar-logo-final.jpg"
-                        alt="Radar Logo"
-                        className="h-10 w-auto rounded-full object-contain"
+    <div className="absolute top-6 left-0 right-0 z-50 flex justify-center px-4">
+        <nav className="w-full max-w-7xl flex justify-between items-center backdrop-blur-xl bg-[#348E87] rounded-2xl px-6 py-3 border border-[#6FFFE9]/20 shadow-lg shadow-[#348E87]/20 transition-all duration-300">
+            {/* Left: Logo & Menu */}
+            <div className="flex items-center gap-8">
+                <div className="flex items-center gap-3">
+                    <div className="relative">
+                        <img
+                            src="/radar-logo-final.jpg"
+                            alt="Radar Logo"
+                            className="h-8 w-auto rounded-full object-contain"
+                        />
+                    </div>
+                    <span className="text-xl font-black text-white tracking-tighter font-['Plus_Jakarta_Sans']">RADAR</span>
+                </div>
+
+                <div className="hidden lg:flex items-center gap-6 text-sm font-bold text-white">
+                    <a href="#" className="hover:text-white transition-colors">Overview</a>
+                    <a href="#" className="hover:text-white transition-colors">Assets</a>
+                    <a href="#" className="hover:text-white transition-colors">Watchlist</a>
+                    <a href="#" className="hover:text-white transition-colors">Signals</a>
+                </div>
+            </div>
+
+            {/* Right: Controls */}
+            <div className="flex items-center gap-4">
+                <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/10 border border-white/10 text-white text-sm focus-within:border-white/30 focus-within:text-white transition-all">
+                    <Search size={14} />
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        className="bg-transparent border-none outline-none text-white w-24 focus:w-32 transition-all placeholder:text-white/40"
                     />
                 </div>
-                <span className="text-2xl font-black text-white tracking-tighter font-['Plus_Jakarta_Sans']">RADAR</span>
+
+                <div className="flex gap-2">
+                    <a href="/login" className="px-5 py-2 text-sm font-bold bg-white text-[#348E87] hover:bg-white/90 rounded-full transition-all">Log In</a>
+                </div>
             </div>
-
-            <div className="hidden lg:flex items-center gap-6 text-sm font-bold text-white/70">
-                <a href="#" className="hover:text-[#6FFFE9] transition-colors">Overview</a>
-                <a href="#" className="hover:text-[#6FFFE9] transition-colors">Assets</a>
-                <a href="#" className="hover:text-[#6FFFE9] transition-colors">Watchlist</a>
-                <a href="#" className="hover:text-[#6FFFE9] transition-colors">Signals</a>
-                <a href="#" className="hover:text-[#6FFFE9] transition-colors">Insights</a>
-            </div>
-        </div>
-
-        {/* Right: Controls */}
-        <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0F3942]/50 border border-white/10 text-white/50 text-sm focus-within:border-[#6FFFE9]/50 focus-within:text-white transition-all">
-                <Search size={14} />
-                <input
-                    type="text"
-                    placeholder="Search AAPL / BTC..."
-                    className="bg-transparent border-none outline-none text-white w-32 focus:w-48 transition-all placeholder:text-white/30"
-                />
-            </div>
-
-            <button className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all relative">
-                <Bell size={18} />
-                <span className="absolute top-1.5 right-2 w-2 h-2 bg-[#4ADE80] rounded-full"></span>
-            </button>
-
-            <div className="h-6 w-[1px] bg-white/10 mx-1"></div>
-
-            <div className="flex gap-2">
-                <a href="/login" className="px-4 py-2 text-sm font-bold text-white/80 hover:text-white">Log In</a>
-            </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 );
 
 // --- Footer ---
 const Footer = () => (
-    <footer className="relative z-10 pt-20 pb-10 border-t border-[#6FFFE9]/10 bg-[#0D343B]">
+    <footer className="relative z-10 pt-20 pb-10 border-t border-[#6FFFE9]/10 bg-[#348E87]">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-16">
             <div className="col-span-1">
                 <div className="flex items-center gap-2 mb-6">
@@ -70,12 +64,12 @@ const Footer = () => (
                     <span className="text-xl font-bold text-white tracking-widest">RADAR</span>
                 </div>
                 <p className="text-white/50 text-sm leading-relaxed">
-                    The advanced analytics platform for modern traders and investors. Real-time data, AI insights, and professional tools.
+                    Radar is a real-time market research platform for observing and analyzing global markets in one structured interface.
                 </p>
             </div>
 
             <div>
-                <h4 className="text-white font-bold mb-6">Product</h4>
+                <h4 className="text-[#348E87] font-bold mb-6">Product</h4>
                 <ul className="space-y-4 text-sm text-white/50">
                     <li><a href="#" className="hover:text-[#6FFFE9] transition-colors">Trade Center</a></li>
                     <li><a href="#" className="hover:text-[#6FFFE9] transition-colors">Pro Mode</a></li>
@@ -85,7 +79,7 @@ const Footer = () => (
             </div>
 
             <div>
-                <h4 className="text-white font-bold mb-6">Resources</h4>
+                <h4 className="text-[#348E87] font-bold mb-6">Resources</h4>
                 <ul className="space-y-4 text-sm text-white/50">
                     <li><a href="#" className="hover:text-[#6FFFE9] transition-colors">Learning Lab</a></li>
                     <li><a href="#" className="hover:text-[#6FFFE9] transition-colors">Market Circle</a></li>
@@ -95,7 +89,7 @@ const Footer = () => (
             </div>
 
             <div>
-                <h4 className="text-white font-bold mb-6">Support</h4>
+                <h4 className="text-[#348E87] font-bold mb-6">Support</h4>
                 <ul className="space-y-4 text-sm text-white/50">
                     <li><a href="#" className="hover:text-[#6FFFE9] transition-colors">Help Center</a></li>
                     <li><a href="#" className="hover:text-[#6FFFE9] transition-colors">Security</a></li>
@@ -116,7 +110,7 @@ const Footer = () => (
 
 export default function Home() {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#103E46] via-[#1A7870] to-[#42C0A5] text-white font-sans selection:bg-radar-cyan selection:text-radar-dark overflow-x-hidden">
+        <div className="min-h-screen bg-[#F8F5EF] text-gray-900 font-sans selection:bg-radar-cyan selection:text-radar-dark overflow-x-hidden">
             <Navbar />
 
             <main className="pt-20">
